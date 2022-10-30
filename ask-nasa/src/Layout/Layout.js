@@ -17,7 +17,7 @@ export function Layout(){
 function Navmenu(){
     return (
         <Navbar bg="light" expand="lg">
-            <Container>
+            <Container fluid={"md"}>
                 <Navbar.Brand href="/">Home</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <NavbarCollapse id="basic-navbar-nav">
