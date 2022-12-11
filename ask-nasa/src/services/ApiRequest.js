@@ -12,8 +12,8 @@ export function GetPic(){
     let year = today.getFullYear().toString();
     let month = (today.getMonth()+1).toString();
     let day = today.getDate().toString();
-    let dateMax = today.getFullYear().toString().concat("-",(today.getMonth()+1).toString(), "-", today.getDate().toString())
-    let todayToQuery = year.concat("-", month, "-", day);
+    let dateMax = year.concat("-", month, "-", day)
+    let todayToQuery = dateMax;
     const [date, setDate] = useState(()=>todayToQuery);
 
 

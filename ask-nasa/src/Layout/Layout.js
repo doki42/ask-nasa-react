@@ -1,33 +1,28 @@
-import {GetPic} from "../services/ApiRequest";
-import {Container, Nav, Navbar, NavLink} from "react-bootstrap";
+import {Container, Nav, Navbar} from "react-bootstrap";
 import NavbarCollapse from "react-bootstrap/NavbarCollapse";
+import {Outlet, Link} from "react-router-dom";
 
 
 export function Layout(){
     return (
         <div>
-            <Navmenu/>
+            <Navbar bg="light" expand="lg">
+                <Container fluid={"md"}>
+                    <Navbar.Brand to="/">Home</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <NavbarCollapse id="basic-navbar-nav">
+                        <Nav className="me-auto">
+                            <Link to='/'>Home</Link>
+                            <Link to='/Gallery'>Gallery</Link>
+                        </Nav>
+                    </NavbarCollapse>
+
+                </Container>
+            </Navbar>
             <div>
-                <GetPic/>
+                <Outlet/>
             </div>
         </div>
     )
 }
 
-function Navmenu(){
-    return (
-        <Navbar bg="light" expand="lg">
-            <Container fluid={"md"}>
-                <Navbar.Brand href="/">Home</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <NavbarCollapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
-                    <NavLink href="/">Home</NavLink>
-                        <NavLink href="#Gallery">Gallery</NavLink>
-                    </Nav>
-                </NavbarCollapse>
-
-            </Container>
-        </Navbar>
-    )
-}
