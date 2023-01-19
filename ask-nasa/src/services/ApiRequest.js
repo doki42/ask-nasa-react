@@ -1,14 +1,15 @@
-import React, {useEffect, useState} from "react";
-import {Button, Form} from "react-bootstrap";
+import {useEffect, useState} from "react";
+import {Button, Form, Container, Row, Col} from "react-bootstrap";
 import {ImageProcessor} from "./imageProcessor";
+import {usePics} from "./GetPics";
 
 export function GetPic(){
     const url = 'https://api.nasa.gov/planetary/apod';
     const apiKey = 'api_key=Dn7SwBivQYIT2DJ11IaInb3mf0pmB4q076ObbVeH';
     const query = '?';
-    const [pics, setPics] = useState({});
+    
 
-        let today = new Date();
+    let today = new Date();
     let year = today.getFullYear().toString();
     let month = (today.getMonth()+1).toString();
     let day = today.getDate().toString();
@@ -19,24 +20,15 @@ export function GetPic(){
 
     let urlToFetch = url.concat(query, apiKey, '&', 'date=', date);
 
-
-    async function fetchPics(){
-        const res = await fetch(urlToFetch);
-        res
-            .json()
-            .then(res => setPics(res));
-
-    }
-    useEffect(() => {
-        fetchPics();
-    }, []);
+    const { pics } = usePics(urlToFetch);
 
 
      return (
-         <div>
+         <Container>
              <center>
                  <h1>Astronomy picture of the day from the NASA collection</h1>
                  <br></br>
+                 <Col md={6}>
                  <Form onSubmit={event => {
 
                      event.preventDefault();
@@ -47,6 +39,7 @@ export function GetPic(){
                          onChange={event => setDate(event.target.value)}></Form.Control>
                      <Button type={"submit"}>Go!</Button>
                  </Form>
+                 </Col>
              <p>{pics.date}</p>
                  <ImageProcessor {...pics}/>
 
@@ -54,6 +47,6 @@ export function GetPic(){
                  <p>{pics.copyright}</p>
              </center>
              <p className={"text-body"}>{pics.explanation}</p>
-         </div>
+         </Container>
      )
 }
