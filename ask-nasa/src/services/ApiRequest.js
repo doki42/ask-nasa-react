@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import {Button, Form, Container, Row, Col} from "react-bootstrap";
+import { useState } from "react";
+import { Form, Container, Row, Col} from "react-bootstrap";
 import {ImageProcessor} from "./imageProcessor";
 import {usePics} from "./GetPics";
 
@@ -14,7 +14,6 @@ export function GetPic(){
     let month = today.getMonth() < 9 ? "0".concat((today.getMonth()+1).toString()) : (today.getMonth()+1).toString();
     let day = today.getDate().toString();
     let dateMax = year.concat("-", month, "-", day)
-    // let todayToQuery = dateMax;
     const [date, setDate] = useState(dateMax);
 
 
