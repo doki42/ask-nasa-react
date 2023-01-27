@@ -10,7 +10,7 @@ export function ImageProcessor(props){
                 <iframe src={props.url} ></iframe>
             )
         default:
-            return (<a href={props.hdurl}><img src={props.url} alt="See Explanation.  Clicking on the picture will download
+            return (<a href={props.hdurl}><img fluid={"true"} src={props.url} alt="See Explanation.  Clicking on the picture will download
 the highest resolution version available."/></a>);
     }
 
