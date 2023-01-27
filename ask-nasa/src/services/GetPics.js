@@ -1,18 +1,18 @@
 import {useEffect, useState} from "react";
 
-export const usePics = (urlToFetch) => {
-    const [pics, setPics] = useState({});
+export const usePics = (url) => {
+    const [pics, setPics] = useState([]);
     
 
     async function fetchPics(){
-        const res = await fetch(urlToFetch);
+        const res = await fetch(url);
         res
             .json()
             .then(res => setPics(res));
     }
     useEffect(() => {
         fetchPics();
-    }, []);
+    }, [url]);
 
-    return { pics };
+    return  { pics };
 }
