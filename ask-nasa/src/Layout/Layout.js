@@ -8,11 +8,10 @@ export function Layout(){
         <div>
             <Navbar bg="light" expand="lg">
                 <Container fluid={"md"}>
-                    <Navbar.Brand href="/">Home</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <NavbarCollapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href='/'>Home</Nav.Link>
+                            <Nav.Link href='/'>Picture of the day</Nav.Link>
                             <Nav.Link href='/Gallery'>Gallery</Nav.Link>
                         </Nav>
                     </NavbarCollapse>
