@@ -6,7 +6,7 @@ export const usePics = (url) => {
 
     async function fetchPics(){
         const res = await fetch(url);
-        res
+        await res
             .json()
             .then(res => setPics(res));
     }
@@ -14,5 +14,5 @@ export const usePics = (url) => {
         fetchPics();
     }, [url]);
 
-    return  { pics };
+    return   pics;
 }

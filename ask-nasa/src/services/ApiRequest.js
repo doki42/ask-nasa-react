@@ -19,7 +19,7 @@ export function GetPic(){
 
     let urlToFetch = url.concat(query, apiKey, '&', 'start_date=', date, '&end_date=', date);
 
-    let {pics} = usePics(urlToFetch);
+    let pics = usePics(urlToFetch);
    
     const handleChange = (event) => {
         setDate(event.target.value);

@@ -20,28 +20,13 @@ export function GetMonthlyPic(){
     let urlToFetch = url.concat(apiKey, '&', 'start_date=', startDate, '&end_date=', todayToQuery, '&thumbs=true');
  
 
-   //const {monthlyPics} = usePics(urlToFetch);
+   const monthlyPics = usePics(urlToFetch);
 
-   const [monthlyPics, setPics] = useState([]);
    const [modalData, setModalData] = useState(null);
       
+   const [show, setShow] = useState(false);
 
-   async function fetchPics(){
-        const res = await fetch(urlToFetch);
-        res
-            .json()
-            .then(res => setPics(res));
-    }
-    useEffect(() => {
-        fetchPics();
-        
-    }, []);
-
-
-   
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
+   const handleClose = () => setShow(false);
     
 
     return (
@@ -51,7 +36,8 @@ export function GetMonthlyPic(){
                 <br></br>
             </center>
                 <Row lg={2} className="g-4">
-                    {monthlyPics.map(pic => (
+                    {monthlyPics ? 
+                    monthlyPics.map(pic => (
                         <Col key={pic.date}>
                             <Card className={"bg-dark text-white"} >
                                 <Card.Img id={pic.date} src={pic.url} alt={"Card Image"} width={"640px"} height={"480px"} loading={"lazy"} />
@@ -65,7 +51,7 @@ export function GetMonthlyPic(){
                             </Card>
                             
                         </Col>
-                        ))
+                        )): (<p>Loading...</p>)
                     }
                     {show && <PicModal show={show} handleClose={handleClose} modalData={modalData} />}
                     
